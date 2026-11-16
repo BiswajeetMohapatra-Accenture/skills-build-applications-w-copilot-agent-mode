@@ -1,4 +1,17 @@
+// Workouts.tsx
 import { CapabilityCard } from './CapabilityCard.js';
+
 export default function Workouts() {
-  return <CapabilityCard title="Workout suggestions" description="Recommend workouts from activity patterns." />;
+  return (
+    <CapabilityCard
+      title="Workout suggestions"
+      description="Recommend workouts from activity patterns."
+      endpoint={`/api/workouts/suggestions/${encodeURIComponent('mona@example.com')}`}
+      dataKey="suggestions"
+      emptyText="No workout suggestions found."
+      renderItem={(item) =>
+        `${String(item.title ?? 'Workout')} - ${String(item.reason ?? '')}`
+      }
+    />
+  );
 }
